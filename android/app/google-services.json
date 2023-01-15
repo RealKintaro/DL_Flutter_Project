@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "185218377889",
+    "project_id": "deep-learnin-9128c",
+    "storage_bucket": "deep-learnin-9128c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:185218377889:android:4d6058d6d89887ff24a8e0",
+        "android_client_info": {
+          "package_name": "com.example.driver_state_detection"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "185218377889-cp1s52ss8prlev6n9orfnsf3a8d4v6fh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUozvSwbQWD_W2IZOpgzx9LgESt0N3ogU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "185218377889-cp1s52ss8prlev6n9orfnsf3a8d4v6fh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
