@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.driver_state_detection">
    <application
-        android:label="driver_state_detection"
+        android:label="Driver State Detection"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

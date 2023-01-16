@@ -109,6 +109,7 @@ class DriverStateFromImageState extends State<DriverStateFromImage> {
                           child: const Text(
                             "No image has been selected",
                             style: TextStyle(
+                              color: Colors.white,
                               fontSize: 20,
                             ),
                           ),
@@ -125,7 +126,7 @@ class DriverStateFromImageState extends State<DriverStateFromImage> {
                       ? Text(
                           "${_recognitions![0]["label"]}",
                           style: const TextStyle(
-                            color: Colors.black,
+                            color: Colors.white,
                             fontSize: 20.0,
                           ),
                         )

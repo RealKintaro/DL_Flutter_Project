@@ -2,6 +2,7 @@ import 'package:driver_state_detection/home_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
+import 'package:flutter/services.dart';
 import 'package:tflite/tflite.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:math' as math;
@@ -47,12 +48,21 @@ class DriverStateFromLiveCameraState extends State<DriverStateFromLiveCamera> {
   @override
   void initState() {
     super.initState();
+
     loadModel();
     // Initialize Firebase with default values
     Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
     _initializeCamera();
+  }
+
+  void portraitModeOnly() {
+    // force page to be in portrait mode
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
   }
 
   void loadModel() async {
@@ -129,12 +139,12 @@ class DriverStateFromLiveCameraState extends State<DriverStateFromLiveCamera> {
               children: [
                 Center(
                   child: AspectRatio(
-                    aspectRatio: cameraController!.value.aspectRatio,
+                    aspectRatio: 16 / 9,
                     child: CameraPreview(cameraController!),
                   ),
                 ),
                 BoundaryBox(
-                    _recognitions!,
+                    _recognitions == null ? [] : _recognitions!,
                     math.max(_imageHeight, _imageWidth),
                     math.min(_imageHeight, _imageWidth),
                     screen.height,
@@ -151,10 +161,16 @@ class DriverStateFromLiveCameraState extends State<DriverStateFromLiveCamera> {
                       FirebaseFirestore.instance
                           .collection('sessions')
                           .add(classes);
-                      Navigator.of(context).push(
+                      // Navigate to the home screen deleting the current route
+                      Navigator.pushAndRemoveUntil(
+                        context,
                         MaterialPageRoute(
-                          builder: (context) => const HomeScreen(),
+                          builder: (context) {
+                            portraitModeOnly();
+                            return const HomeScreen();
+                          },
                         ),
+                        (route) => false,
                       );
                     },
                   ),
